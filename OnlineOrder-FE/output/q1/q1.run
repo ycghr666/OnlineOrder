@@ -1,0 +1,16 @@
+reset;
+model q1.mod;
+data q1.dat;
+
+option solver highs;
+option presolve 0;
+
+printf "Current basic solution: (2, 4, %g, 0, 0)\n", c;
+printf "Current objective: 7\n";
+
+solve;
+display solve_result;
+
+if solve_result = "solved" then {
+    display x, z;
+}
